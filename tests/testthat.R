@@ -1,4 +1,4 @@
-library(testthat)
-library(qhelpr)
+library("testthat")
+library("qfmtr")
 
-test_check("qhelpr")
+test_check("qfmtr")

@@ -9,17 +9,20 @@ Authors@R: c(
     ),
     person(family = "Schneider Electric", role = c("cph"))
   )
-Description: One purpose of an API client in R is to let you work in the 
-  R world and for the client translate to the remote world. In many cases,
-  parameters for http queries are formatted differently from R: logicals are
-  expressed as true/false, time durations are specified in ms (R uses 
-  difftime, or lubridate durations), 
-  and vectors are expressed using comma-delimited strings. The goal of this
-  package is to make that translation process easier.
-Depends: R (>= 3.3.2)
+Description: One purpose of an API client in R is to let you work in the
+    R world and for the client translate to the remote world. In many cases,
+    parameters for http queries are formatted differently from R: logicals are
+    expressed as true/false, time durations are specified in ms (R uses
+    difftime, or lubridate durations),
+    and vectors are expressed using comma-delimited strings. The goal of this
+    package is to make that translation process easier.
+Depends:
+    R (>= 3.3.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/ijlyttle/qfmtr
 BugReports: https://github.com/ijlyttle/qfmtr/issues
-Suggests: testthat
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
