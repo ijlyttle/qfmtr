@@ -4,6 +4,8 @@ To do:
 
 - adds function `qfmt()` to format a list to be used in a query
 
+Done:
+
 - adds **pkgdown** support
 - adds a `NEWS.md` file to track changes to the package
 

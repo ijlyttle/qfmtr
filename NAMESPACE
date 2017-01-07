@@ -2,4 +2,9 @@
 
 export("%>%")
 export(qfmt)
+export(qfmtr_fmt)
+export(qfmtr_fmt.default)
+export(qfmtr_fmt.logical)
+exportMethods(qfmtr_fmt)
+importClassesFrom(lubridate,Duration)
 importFrom(magrittr,"%>%")
