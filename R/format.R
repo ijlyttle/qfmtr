@@ -10,7 +10,8 @@ qfmt <- function(x){
   # x has to be a list
   assertthat::assert_that(is.list(x))
 
-  # format logicals
+  x <- x %>%
+    purrr::map(.fmt_lgl) # format logicals
 
   # format durations
 
@@ -22,7 +23,14 @@ qfmt <- function(x){
 }
 
 .fmt_lgl <- function(x){
-  x
+
+  x_new <- x
+
+  if (is.logical(x)){
+    x_new <- ifelse(x, "true", "false")
+  }
+
+  x_new
 }
 
 
