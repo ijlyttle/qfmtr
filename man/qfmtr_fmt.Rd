@@ -6,23 +6,28 @@
 \alias{qfmtr_fmt,Duration-method}
 \alias{qfmtr_fmt,Period-method}
 \alias{qfmtr_fmt.default}
+\alias{qfmtr_fmt.difftime}
 \alias{qfmtr_fmt.logical}
 \title{Format an atomic vector}
 \usage{
-qfmtr_fmt(x, ...)
+qfmtr_fmt(x, locale = default_locale(), ...)
 
-qfmtr_fmt.default(x, ...)
+qfmtr_fmt.default(x, locale = default_locale(), ...)
 
-qfmtr_fmt.logical(x, ...)
+qfmtr_fmt.logical(x, locale = default_locale(), ...)
 
-qfmtr_fmt(x, ...)
+qfmtr_fmt(x, locale = default_locale(), ...)
 
-\S4method{qfmtr_fmt}{Duration}(x, ...)
+\S4method{qfmtr_fmt}{Duration}(x, locale = default_locale(), ...)
 
-\S4method{qfmtr_fmt}{Period}(x, ...)
+\S4method{qfmtr_fmt}{Period}(x, locale = default_locale(), ...)
+
+qfmtr_fmt.difftime(x, locale = default_locale(), ...)
 }
 \arguments{
 \item{x}{atomic vector}
+
+\item{locale}{list, generated using \code{\link{locale}}}
 
 \item{...}{additional arguments}
 }

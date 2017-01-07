@@ -1,14 +1,15 @@
 #' Format an atomic vector
 #'
-#' @param x    atomic vector
-#' @param ...  additional arguments
+#' @param x      atomic vector
+#' @param locale list, generated using \code{\link{locale}}
+#' @param ...    additional arguments
 #'
 #' @return character
 #'
 #' @keywords internal
 #' @export
 #'
-qfmtr_fmt <- function(x, ...){
+qfmtr_fmt <- function(x, locale = default_locale(), ...){
   UseMethod("qfmtr_fmt")
 }
 
@@ -16,7 +17,7 @@ qfmtr_fmt <- function(x, ...){
 #' @keywords internal
 #' @export
 #'
-qfmtr_fmt.default <- function(x, ...){
+qfmtr_fmt.default <- function(x, locale = default_locale(), ...){
   format(x)
 }
 
@@ -31,7 +32,7 @@ qfmtr_fmt.default <- function(x, ...){
 #' @keywords internal
 #' @export
 #'
-qfmtr_fmt.logical <- function(x, ...){
+qfmtr_fmt.logical <- function(x, locale = default_locale(), ...){
   ifelse(x, "true", "false")
 }
 
@@ -48,7 +49,7 @@ qfmtr_fmt.logical <- function(x, ...){
 #' @keywords internal
 #' @export
 #'
-setGeneric("qfmtr_fmt", function(x, ...) {
+setGeneric("qfmtr_fmt", function(x, locale = default_locale(), ...) {
   standardGeneric("qfmtr_fmt")
 })
 
@@ -57,11 +58,11 @@ setGeneric("qfmtr_fmt", function(x, ...) {
 #' @importClassesFrom lubridate Duration
 #' @export
 #'
-setMethod("qfmtr_fmt", list("Duration"), function(x, ...){
+setMethod("qfmtr_fmt", list("Duration"), function(x, locale = default_locale(), ...){
 
   x <- x / lubridate::dmilliseconds(1)
 
-  qfmtr_fmt.default(x, ...)
+  qfmtr_fmt.default(x, locale = locale, ...)
 })
 
 # period
@@ -78,20 +79,20 @@ setMethod("qfmtr_fmt", list("Duration"), function(x, ...){
 #' @importClassesFrom lubridate Period
 #' @export
 #'
-setMethod("qfmtr_fmt", list("Period"), function(x, ...){
+setMethod("qfmtr_fmt", list("Period"), function(x, locale = default_locale(), ...){
 
   x <- lubridate::as.duration(x)
 
-  qfmtr_fmt(x, ...)
+  qfmtr_fmt(x, locale = locale, ...)
 })
 
 #' @rdname qfmtr_fmt
 #' @keywords internal
 #' @export
 #'
-qfmtr_fmt.difftime <- function(x, ...){
+qfmtr_fmt.difftime <- function(x, locale = default_locale(), ...){
   x <- lubridate::as.duration(x)
 
-  qfmtr_fmt(x, ...)
+  qfmtr_fmt(x, locale = locale, ...)
 }
 

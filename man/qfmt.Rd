@@ -4,10 +4,14 @@
 \alias{qfmt}
 \title{Format a list to use as http query}
 \usage{
-qfmt(x)
+qfmt(x, delim = ",", locale = default_locale())
 }
 \arguments{
 \item{x}{list, where values are to be formatted}
+
+\item{delim}{character, delimiter for mutiple-value members}
+
+\item{locale}{list, directs the formatting functions for each class}
 }
 \value{
 list
