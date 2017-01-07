@@ -28,4 +28,5 @@ Suggests:
     covr
 RoxygenNote: 5.0.1
 Imports: assertthat,
-    purrr
+    purrr,
+    magrittr

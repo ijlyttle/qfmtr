@@ -22,6 +22,7 @@ qfmt <- function(x){
   x
 }
 
+# takes a scalar, formats if it is logical
 .fmt_lgl <- function(x){
 
   x_new <- x
