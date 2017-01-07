@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/qfmtr)](https://cran.r-project.org/package=qfmtr) [![Travis-CI Build Status](https://travis-ci.org/ijlyttle/qfmtr.svg?branch=master)](https://travis-ci.org/ijlyttle/qfmtr)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/qfmtr)](https://cran.r-project.org/package=qfmtr) [![Travis-CI Build Status](https://travis-ci.org/ijlyttle/qfmtr.svg?branch=master)](https://travis-ci.org/ijlyttle/qfmtr) [![Coverage Status](https://img.shields.io/codecov/c/github/ijlyttle/qfmtr/master.svg)](https://codecov.io/github/ijlyttle/qfmtr?branch=master)
 
 qfmtr
 =====
