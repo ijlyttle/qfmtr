@@ -16,7 +16,7 @@ The goal of this package is to make that translation process easier.
 Installation
 ------------
 
-You can install qhelpr from github with:
+You can install qfmtr from github with:
 
 ``` r
 # install.packages("devtools")

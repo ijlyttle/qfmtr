@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Format a list to use as http query — qfmt • qfmtr</title>
+<title>Create a locale — locale • qfmtr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -74,23 +74,24 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Format a list to use as http query</h1>
+    <h1>Create a locale</h1>
     </div>
 
     
-    <p>Format a list to use as http query</p>
+    <p>This locale object acts much like the locale object from the <strong>readr</strong> package.
+It is used to provide direction to the formatting methods for individual classes.</p>
     
 
-    <pre><span class='fu'>qfmt</span>(<span class='no'>x</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>","</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='fu'>default_locale</span>())</pre>
+    <pre><span class='fu'>locale</span>(<span class='kw'>logical_format</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>true</span> <span class='kw'>=</span> <span class='st'>"true"</span>, <span class='kw'>false</span> <span class='kw'>=</span> <span class='st'>"false"</span>),
+  <span class='kw'>duration_unit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ms"</span>, <span class='st'>"s"</span>, <span class='st'>"min"</span>, <span class='st'>"hr"</span>, <span class='st'>"day"</span>, <span class='st'>"week"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>list, where values are to be formatted</dd>
-      <dt>delim</dt>
-      <dd>character, delimiter for mutiple-value members</dd>
-      <dt>locale</dt>
-      <dd>list, directs the formatting functions for each class</dd>
+      <dt>logical_format</dt>
+      <dd>list, with two members: <code>true</code> and <code>false</code>,
+indicating how logicals will be written.</dd>
+      <dt>duration_unit</dt>
+      <dd>character, indicates how to express time-durations</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
