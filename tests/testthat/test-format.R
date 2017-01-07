@@ -30,5 +30,6 @@ test_that("conversion works", {
   expect_identical(qfmtr_fmt(lgl), f_lgl)
   expect_identical(qfmtr_fmt(dur), f_dur)
   expect_identical(qfmtr_fmt(per), f_per)
+  expect_identical(qfmtr_fmt(dftm), f_dftm)
 })
 

@@ -13,6 +13,14 @@
 locale <- function(logical_format = list(true = "true", false = "false"),
                    duration_unit = c("ms", "s", "min", "hr", "day", "week")){
 
+  assertthat::assert_that(
+    is.list(logical_format),
+    assertthat::has_name(logical_format, "true"),
+    assertthat::has_name(logical_format, "false"),
+    is.character(logical_format[["true"]]),
+    is.character(logical_format[["false"]])
+  )
+
   duration_unit <- match.arg(duration_unit)
 
   list(logical_format = logical_format, duration_unit = duration_unit)
