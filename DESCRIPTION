@@ -1,5 +1,5 @@
-Package: qhelpr
-Title: Help to Compose http Queries
+Package: qfmtr
+Title: Help to Format http Queries
 Version: 0.0.0.9000
 Authors@R: c(
     person(
@@ -20,5 +20,6 @@ Depends: R (>= 3.3.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/ijlyttle/qhelpr
-BugReports: https://github.com/ijlyttle/qhelpr/issues
+URL: https://github.com/ijlyttle/qfmtr
+BugReports: https://github.com/ijlyttle/qfmtr/issues
+Suggests: testthat
