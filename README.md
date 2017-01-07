@@ -5,7 +5,7 @@ qhelpr
 
 One purpose of an API client in R is to let you work in the R world and for the client translate to the remote world. In many cases, parameters for http queries are formatted differently from R:
 
--   logicals areexpressed as true/false,
+-   logicals are expressed as `"true"`/`"false"`,
 -   time durations are specified in ms (R uses difftime, or lubridate durations),
 -   vectors are expressed using comma-delimited strings.
 
@@ -29,3 +29,8 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 ## basic example code
 ```
+
+Code of Conduct
+---------------
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

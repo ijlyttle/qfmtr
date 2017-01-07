@@ -1,5 +1,5 @@
 Package: qhelpr
-Title: Helps to Compose http Queries
+Title: Help to Compose http Queries
 Version: 0.0.0.9000
 Authors@R: c(
     person(
