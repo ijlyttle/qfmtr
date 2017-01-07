@@ -10,6 +10,19 @@ qfmt <- function(x){
   # x has to be a list
   assertthat::assert_that(is.list(x))
 
+  # format logicals
+
+  # format durations
+
+  # format difftimes
+
+  # format vectors
 
   x
 }
+
+.fmt_lgl <- function(x){
+  x
+}
+
+

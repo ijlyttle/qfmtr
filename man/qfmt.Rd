@@ -2,7 +2,7 @@
 % Please edit documentation in R/format.R
 \name{qfmt}
 \alias{qfmt}
-\title{Format a list into a query list}
+\title{Format a list to use as http query}
 \usage{
 qfmt(x)
 }
@@ -13,6 +13,6 @@ qfmt(x)
 list
 }
 \description{
-Format a list into a query list
+Format a list to use as http query
 }
 
