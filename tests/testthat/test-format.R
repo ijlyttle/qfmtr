@@ -1,5 +1,8 @@
 context("format")
 
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+list_char = list(foo = "bar")
+
+test_that("list assertion works", {
+  expect_error(qfmt("foo"), "list")
+  expect_identical(qfmt(list_char), list_char)
 })
