@@ -4,6 +4,7 @@
 \name{qfmtr_fmt}
 \alias{qfmtr_fmt}
 \alias{qfmtr_fmt,Duration-method}
+\alias{qfmtr_fmt,Period-method}
 \alias{qfmtr_fmt.default}
 \alias{qfmtr_fmt.logical}
 \title{Format an atomic vector}
@@ -17,6 +18,8 @@ qfmtr_fmt.logical(x, ...)
 qfmtr_fmt(x, ...)
 
 \S4method{qfmtr_fmt}{Duration}(x, ...)
+
+\S4method{qfmtr_fmt}{Period}(x, ...)
 }
 \arguments{
 \item{x}{atomic vector}

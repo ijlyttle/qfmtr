@@ -58,9 +58,40 @@ setGeneric("qfmtr_fmt", function(x, ...) {
 #' @export
 #'
 setMethod("qfmtr_fmt", list("Duration"), function(x, ...){
-  x_new <- x@.Data * 1000 # get ms
 
-  x_new <- x / lubridate::dmilliseconds(1)
+  x <- x / lubridate::dmilliseconds(1)
 
-  x_new
+  qfmtr_fmt.default(x, ...)
 })
+
+# period
+#
+# returns milliseconds
+#
+# TODO: consider using option
+#   fmt = c("ms", "s", "minute", "hour", "day", "week", "year")
+#
+# S4 generic for converting to a bootstrap option
+
+#' @rdname qfmtr_fmt
+#' @keywords internal
+#' @importClassesFrom lubridate Period
+#' @export
+#'
+setMethod("qfmtr_fmt", list("Period"), function(x, ...){
+
+  x <- lubridate::as.duration(x)
+
+  qfmtr_fmt(x, ...)
+})
+
+#' @rdname qfmtr_fmt
+#' @keywords internal
+#' @export
+#'
+qfmtr_fmt.difftime <- function(x, ...){
+  x <- lubridate::as.duration(x)
+
+  qfmtr_fmt(x, ...)
+}
+

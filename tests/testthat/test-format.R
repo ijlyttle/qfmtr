@@ -1,31 +1,34 @@
 context("format")
 
-list_char <- list(a = "a", b = "b")
-list_num <- list(one = 1, two = 2L)
-list_lgl <- list(true = TRUE, false = FALSE)
+library("lubridate")
 
-q_char <- list_char
-q_num <- list(one = "1", two = "2")
-q_lgl <- list(true = "true", false = "false")
+char <- c("a", "b")
+dbl <- c(1, 2)
+int <- c(1L, 2L)
+lgl <- c(TRUE, FALSE)
+dur <- dseconds(c(1, 2))
+per <-seconds(c(1, 2))
+dftm <- as.difftime(c(4, 5), units = "secs")
+
+f_char <- char
+f_dbl <- format(dbl)
+f_int <- format(int)
+f_lgl <- c("true", "false")
+f_dur <- format(c(1000, 2000))
+f_per <- format(c(1000, 2000))
+f_dftm <- format(c(4000, 5000))
 
 test_that("list assertion works", {
   expect_error(qfmt("foo"), "list")
-})
-
-test_that("pass-through works", {
-  expect_identical(qfmt(list_char), q_char)
-  expect_identical(qfmt(list_num), q_num)
+  expect_identical(qfmt(list("foo")), list("foo"))
 })
 
 test_that("conversion works", {
-  expect_identical(qfmtr_fmt("a"), "a")
-  expect_identical(qfmtr_fmt(TRUE), "true")
-  expect_identical(qfmtr_fmt(FALSE), "false")
+  expect_identical(qfmtr_fmt(char), f_char)
+  expect_identical(qfmtr_fmt(dbl), f_dbl)
+  expect_identical(qfmtr_fmt(int), f_int)
+  expect_identical(qfmtr_fmt(lgl), f_lgl)
+  expect_identical(qfmtr_fmt(dur), f_dur)
+  expect_identical(qfmtr_fmt(per), f_per)
 })
 
-test_that("combinations work", {
-  expect_identical(
-    qfmt(c(list_char, list_lgl)),
-    c(q_char, q_lgl)
-  )
-})
