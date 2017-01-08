@@ -56,7 +56,7 @@ srlst(query_params)
 #> [1] "20"
 ```
 
-Next, you can use the **httr** package to build your URL, attaching the query.
+Thus, you can use the **httr** package to build your URL, attaching the query.
 
 ``` r
 url <- parse_url("https://useful.site.com/service")

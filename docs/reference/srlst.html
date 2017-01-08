@@ -81,12 +81,12 @@
     <p>This function acts as a text-serializer for lists. One use case is</p>
     
 
-    <pre><span class='fu'>srlst</span>(<span class='no'>x</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>","</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='fu'>default_locale</span>())</pre>
+    <pre><span class='fu'>srlst</span>(<span class='no'>x</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>","</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='fu'><a href='locale.html'>default_locale</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
-      <dd>list, where values are to be formatted (serialized)</dd>
+      <dd>list, values to be serialized</dd>
       <dt>delim</dt>
       <dd>character, delimiter to collapse mutiple-value members</dd>
       <dt>locale</dt>
@@ -95,9 +95,40 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list with same names as <code>x</code>, values are all <code>character</code></p>
+    <p>list with same names as <code>x</code>, all values are <code>character</code></p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='locale.html'>locale</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='st'>"lubridate"</span>)
+
+<span class='no'>query_param</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='kw'>delay</span> <span class='kw'>=</span> <span class='fu'>dseconds</span>(<span class='fl'>4</span>),
+  <span class='kw'>next_steps</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"collate"</span>, <span class='st'>"send"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
+
+<span class='fu'>srlst</span>(<span class='no'>query_param</span>)</div><div class='output co'>#&gt; $delay
+#&gt; [1] &quot;4000&quot;
+#&gt; 
+#&gt; $next_steps
+#&gt; [1] &quot;collate,send&quot;
+#&gt; 
+#&gt; $verbose
+#&gt; [1] &quot;true&quot;
+#&gt; </div><div class='input'>
+<span class='fu'>srlst</span>(<span class='no'>query_param</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; $delay
+#&gt; [1] &quot;4000&quot;
+#&gt; 
+#&gt; $next_steps
+#&gt; [1] &quot;collate send&quot;
+#&gt; 
+#&gt; $verbose
+#&gt; [1] &quot;true&quot;
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -105,7 +136,11 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -85,7 +85,9 @@ query-parameter list sent to <code><a href='srlst.html'>srlst</a></code>.</p>
     
 
     <pre><span class='fu'>locale</span>(<span class='kw'>logical_format</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>true</span> <span class='kw'>=</span> <span class='st'>"true"</span>, <span class='kw'>false</span> <span class='kw'>=</span> <span class='st'>"false"</span>),
-  <span class='kw'>dtime_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ms"</span>, <span class='st'>"s"</span>, <span class='st'>"minute"</span>, <span class='st'>"hour"</span>, <span class='st'>"day"</span>, <span class='st'>"week"</span>))</pre>
+  <span class='kw'>dtime_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ms"</span>, <span class='st'>"s"</span>, <span class='st'>"minute"</span>, <span class='st'>"hour"</span>, <span class='st'>"day"</span>, <span class='st'>"week"</span>))
+
+<span class='fu'>default_locale</span>()</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -107,6 +109,31 @@ value of the time-differences expressed using that unit.</dd>
     <p><code><a href='srlst.html'>srlst</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='st'>"lubridate"</span>)
+
+<span class='no'>query_params</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>delay</span> <span class='kw'>=</span> <span class='fu'>dseconds</span>(<span class='fl'>5</span>)
+)
+
+<span class='fu'><a href='srlst.html'>srlst</a></span>(<span class='no'>query_params</span>)</div><div class='output co'>#&gt; $keep
+#&gt; [1] &quot;true&quot;
+#&gt; 
+#&gt; $delay
+#&gt; [1] &quot;5000&quot;
+#&gt; </div><div class='input'>
+<span class='no'>locale_new</span> <span class='kw'>&lt;-</span> <span class='fu'>locale</span>(
+  <span class='kw'>logical_format</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>true</span> <span class='kw'>=</span> <span class='st'>"True"</span>, <span class='kw'>false</span> <span class='kw'>=</span> <span class='st'>"False"</span>),
+  <span class='kw'>dtime_format</span> <span class='kw'>=</span> <span class='st'>"s"</span>
+)
+
+<span class='fu'><a href='srlst.html'>srlst</a></span>(<span class='no'>query_params</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='no'>locale_new</span>)</div><div class='output co'>#&gt; $keep
+#&gt; [1] &quot;True&quot;
+#&gt; 
+#&gt; $delay
+#&gt; [1] &quot;5&quot;
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -114,7 +141,9 @@ value of the time-differences expressed using that unit.</dd>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

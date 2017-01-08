@@ -1,5 +1,5 @@
 Package: srlst
-Title: Serialize lists into text-lists
+Title: Serialize Lists into Text-Lists
 Version: 0.0.0.9000
 Authors@R: c(
     person(

@@ -21,21 +21,16 @@ serialize_atomic.default <- function(x, locale = default_locale(), ...){
   as.character(x)
 }
 
-# logical
-#
-# returns "true"/"false"
-#
-# TODO: consider using an option fmt = c(true = "true", false = "false")
-#
-
 #' @rdname serialize_atomic
 #' @keywords internal
 #' @export
 #'
 serialize_atomic.logical <- function(x, locale = default_locale(), ...){
-  ifelse(x, "true", "false")
-}
 
+  logical_format <- locale$logical_format
+
+  ifelse(x, logical_format[["true"]], logical_format[["false"]])
+}
 
 #' @rdname serialize_atomic
 #' @keywords internal

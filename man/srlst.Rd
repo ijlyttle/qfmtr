@@ -7,16 +7,32 @@
 srlst(x, delim = ",", locale = default_locale())
 }
 \arguments{
-\item{x}{list, where values are to be formatted (serialized)}
+\item{x}{list, values to be serialized}
 
 \item{delim}{character, delimiter to collapse mutiple-value members}
 
 \item{locale}{list, directs the formatting functions for each class}
 }
 \value{
-list with same names as \code{x}, values are all \code{\link{character}}
+list with same names as \code{x}, all values are \code{\link{character}}
 }
 \description{
 This function acts as a text-serializer for lists. One use case is
+}
+\examples{
+library("lubridate")
+
+query_param <- list(
+  delay = dseconds(4),
+  next_steps = c("collate", "send"),
+  verbose = TRUE
+)
+
+srlst(query_param)
+
+srlst(query_param, delim = " ")
+}
+\seealso{
+\code{\link{locale}}
 }
 

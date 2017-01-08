@@ -16,6 +16,22 @@
 #'   value of the time-differences expressed using that unit.
 #'
 #' @seealso \code{\link{srlst}}
+#' @examples
+#' library("lubridate")
+#'
+#' query_params <- list(
+#'   keep = TRUE,
+#'   delay = dseconds(5)
+#' )
+#'
+#' srlst(query_params)
+#'
+#' locale_new <- locale(
+#'   logical_format = list(true = "True", false = "False"),
+#'   dtime_format = "s"
+#' )
+#'
+#' srlst(query_params, locale = locale_new)
 #' @export
 #'
 locale <- function(logical_format = list(true = "true", false = "false"),
@@ -34,6 +50,8 @@ locale <- function(logical_format = list(true = "true", false = "false"),
   list(logical_format = logical_format, dtime_format = dtime_format)
 }
 
+#' @rdname locale
+#' @export
 default_locale <- function(){
   locale()
 }

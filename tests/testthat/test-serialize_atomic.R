@@ -33,9 +33,5 @@ test_that("conversion works for atomic vectors", {
   expect_identical(serialize_atomic(dftm_min, locale = locale_min), ser_dftm_min)
 })
 
-test_that("list assertion works", {
-  expect_error(srlst("foo"), "list")
-  expect_identical(srlst(list("foo")), list("foo"))
-})
 
 
