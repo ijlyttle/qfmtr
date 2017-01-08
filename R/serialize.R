@@ -14,7 +14,7 @@ srlst <- function(x, delim = ",", locale = default_locale()){
   # x has to be a list
   assertthat::assert_that(is.list(x))
 
-  x <- lapply(x, srlz_atomic)
+  x <- lapply(x, serialize_atomic)
   x <- lapply(x, paste, sep = "", collapse = delim)
 
   x

@@ -23,14 +23,14 @@ ser_per <- format(c(1000, 2000))
 ser_dftm <- format(c(4000, 5000))
 
 test_that("conversion works for atomic vectors", {
-  expect_identical(srlz_atomic(char), ser_char)
-  expect_identical(srlz_atomic(dbl), ser_dbl)
-  expect_identical(srlz_atomic(int), ser_int)
-  expect_identical(srlz_atomic(lgl), ser_lgl)
-  expect_identical(srlz_atomic(dur), ser_dur)
-  expect_identical(srlz_atomic(per), ser_per)
-  expect_identical(srlz_atomic(dftm), ser_dftm)
-  expect_identical(srlz_atomic(dftm_min, locale = locale_min), ser_dftm_min)
+  expect_identical(serialize_atomic(char), ser_char)
+  expect_identical(serialize_atomic(dbl), ser_dbl)
+  expect_identical(serialize_atomic(int), ser_int)
+  expect_identical(serialize_atomic(lgl), ser_lgl)
+  expect_identical(serialize_atomic(dur), ser_dur)
+  expect_identical(serialize_atomic(per), ser_per)
+  expect_identical(serialize_atomic(dftm), ser_dftm)
+  expect_identical(serialize_atomic(dftm_min, locale = locale_min), ser_dftm_min)
 })
 
 test_that("list assertion works", {

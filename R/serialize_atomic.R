@@ -9,15 +9,15 @@
 #' @keywords internal
 #' @export
 #'
-srlz_atomic <- function(x, locale = default_locale(), ...){
-  UseMethod("srlz_atomic")
+serialize_atomic <- function(x, locale = default_locale(), ...){
+  UseMethod("serialize_atomic")
 }
 
-#' @rdname srlz_atomic
+#' @rdname serialize_atomic
 #' @keywords internal
 #' @export
 #'
-srlz_atomic.default <- function(x, locale = default_locale(), ...){
+serialize_atomic.default <- function(x, locale = default_locale(), ...){
   as.character(x)
 }
 
@@ -28,51 +28,51 @@ srlz_atomic.default <- function(x, locale = default_locale(), ...){
 # TODO: consider using an option fmt = c(true = "true", false = "false")
 #
 
-#' @rdname srlz_atomic
+#' @rdname serialize_atomic
 #' @keywords internal
 #' @export
 #'
-srlz_atomic.logical <- function(x, locale = default_locale(), ...){
+serialize_atomic.logical <- function(x, locale = default_locale(), ...){
   ifelse(x, "true", "false")
 }
 
-#' @rdname srlz_atomic
+#' @rdname serialize_atomic
 #' @keywords internal
 #' @export
 #'
-setGeneric("srlz_atomic", function(x, locale = default_locale(), ...) {
-  standardGeneric("srlz_atomic")
+setGeneric("serialize_atomic", function(x, locale = default_locale(), ...) {
+  standardGeneric("serialize_atomic")
 })
 
-#' @rdname srlz_atomic
+#' @rdname serialize_atomic
 #' @keywords internal
 #' @importClassesFrom lubridate Duration
 #' @export
 #'
-setMethod("srlz_atomic", list("Duration"), function(x, locale = default_locale(), ...){
+setMethod("serialize_atomic", list("Duration"), function(x, locale = default_locale(), ...){
 
   x <- lubridate::as.difftime(x)
 
-  srlz_atomic(x, locale = locale, ...)
+  serialize_atomic(x, locale = locale, ...)
 })
 
-#' @rdname srlz_atomic
+#' @rdname serialize_atomic
 #' @keywords internal
 #' @importClassesFrom lubridate Period
 #' @export
 #'
-setMethod("srlz_atomic", list("Period"), function(x, locale = default_locale(), ...){
+setMethod("serialize_atomic", list("Period"), function(x, locale = default_locale(), ...){
 
   x <- lubridate::as.difftime(x)
 
-  srlz_atomic(x, locale = locale, ...)
+  serialize_atomic(x, locale = locale, ...)
 })
 
-#' @rdname srlz_atomic
+#' @rdname serialize_atomic
 #' @keywords internal
 #' @export
 #'
-srlz_atomic.difftime <- function(x, locale = default_locale(), ...){
+serialize_atomic.difftime <- function(x, locale = default_locale(), ...){
 
   list_xref <- list(
     ms = as.difftime(0.001, units = "secs"),
@@ -92,6 +92,6 @@ srlz_atomic.difftime <- function(x, locale = default_locale(), ...){
 
   x <- as.numeric(x) / as.numeric(x_ref)
 
-  srlz_atomic.default(x, locale = locale, ...)
+  serialize_atomic.default(x, locale = locale, ...)
 }
 
