@@ -29,7 +29,41 @@ Example
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-## basic example code
+library("lubridate")
+library("qfmtr")
+
+query_params <- list(
+  delay = dseconds(3),
+  print = TRUE,
+  next_steps = c("collate", "send"),
+  number = 20
+)
+
+qfmt(query_params)
+#> $delay
+#> [1] "3000"
+#> 
+#> $print
+#> [1] "true"
+#> 
+#> $next_steps
+#> [1] "collate,send"
+#> 
+#> $number
+#> [1] "20"
+```
+
+Here's where it can be handy:
+
+``` r
+library("httr")
+
+url <- parse_url("https://useful.site.com/service")
+
+url$query <- qfmt(query_params)
+
+build_url(url)
+#> [1] "https://useful.site.com/service?delay=3000&print=true&next_steps=collate%2Csend&number=20"
 ```
 
 Code of Conduct

@@ -18,12 +18,7 @@ f_dur <- format(c(1000, 2000))
 f_per <- format(c(1000, 2000))
 f_dftm <- format(c(4000, 5000))
 
-test_that("list assertion works", {
-  expect_error(qfmt("foo"), "list")
-  expect_identical(qfmt(list("foo")), list("foo"))
-})
-
-test_that("conversion works", {
+test_that("conversion works for atomic vectors", {
   expect_identical(qfmtr_fmt(char), f_char)
   expect_identical(qfmtr_fmt(dbl), f_dbl)
   expect_identical(qfmtr_fmt(int), f_int)
@@ -32,4 +27,10 @@ test_that("conversion works", {
   expect_identical(qfmtr_fmt(per), f_per)
   expect_identical(qfmtr_fmt(dftm), f_dftm)
 })
+
+test_that("list assertion works", {
+  expect_error(qfmt("foo"), "list")
+  expect_identical(qfmt(list("foo")), list("foo"))
+})
+
 

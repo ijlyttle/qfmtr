@@ -18,7 +18,7 @@ qfmtr_fmt <- function(x, locale = default_locale(), ...){
 #' @export
 #'
 qfmtr_fmt.default <- function(x, locale = default_locale(), ...){
-  format(x)
+  x
 }
 
 # logical

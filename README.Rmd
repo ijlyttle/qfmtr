@@ -39,8 +39,30 @@ devtools::install_github("ijlyttle/qfmtr")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
-## basic example code
+```{r example, message=FALSE}
+library("lubridate")
+library("qfmtr")
+
+query_params <- list(
+  delay = dseconds(3),
+  print = TRUE,
+  next_steps = c("collate", "send"),
+  number = 20
+)
+
+qfmt(query_params)
+```
+
+Here's where it can be handy:
+
+```{r httr}
+library("httr")
+
+url <- parse_url("https://useful.site.com/service")
+
+url$query <- qfmt(query_params)
+
+build_url(url)
 ```
 
 ## Code of Conduct

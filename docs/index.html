@@ -57,7 +57,37 @@ devtools::<span class="kw">install_github</span>(<span class="st">"ijlyttle/qfmt
 <div id="example" class="section level2">
 <h2 class="hasAnchor"><a href="#example" class="anchor"> </a>Example</h2>
 <p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## basic example code</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"lubridate"</span>)
+<span class="kw">library</span>(<span class="st">"qfmtr"</span>)
+
+query_params &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="dt">delay =</span> <span class="kw">dseconds</span>(<span class="dv">3</span>),
+  <span class="dt">print =</span> <span class="ot">TRUE</span>,
+  <span class="dt">next_steps =</span> <span class="kw">c</span>(<span class="st">"collate"</span>, <span class="st">"send"</span>),
+  <span class="dt">number =</span> <span class="dv">20</span>
+)
+
+<span class="kw"><a href="reference/qfmt.html">qfmt</a></span>(query_params)
+<span class="co">#&gt; $delay</span>
+<span class="co">#&gt; [1] "3000"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $print</span>
+<span class="co">#&gt; [1] "true"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $next_steps</span>
+<span class="co">#&gt; [1] "collate,send"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $number</span>
+<span class="co">#&gt; [1] "20"</span></code></pre></div>
+<p>Here&rsquo;s where it can be handy:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"httr"</span>)
+
+url &lt;-<span class="st"> </span><span class="kw">parse_url</span>(<span class="st">"https://useful.site.com/service"</span>)
+
+url$query &lt;-<span class="st"> </span><span class="kw"><a href="reference/qfmt.html">qfmt</a></span>(query_params)
+
+<span class="kw">build_url</span>(url)
+<span class="co">#&gt; [1] "https://useful.site.com/service?delay=3000&amp;print=true&amp;next_steps=collate%2Csend&amp;number=20"</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor"><a href="#code-of-conduct" class="anchor"> </a>Code of Conduct</h2>

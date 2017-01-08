@@ -12,8 +12,8 @@ qfmt <- function(x, delim = ",", locale = default_locale()){
   # x has to be a list
   assertthat::assert_that(is.list(x))
 
-  x <- x %>%
-    purrr::map(qfmtr_fmt)
+  x <- lapply(x, qfmtr_fmt)
+  x <- lapply(x, paste, sep = "", collapse = delim)
 
   x
 }
