@@ -5,18 +5,18 @@
 srlst
 =====
 
-One purpose of an API client in R is to let you work in the R world and for the client translate to the remote world. In many cases, parameters for http queries are formatted differently from R:
+Serialzing lists into text-lists can make it easier to work with web-service APIs. This package can help you work with http-query lists in the "R world", helping you serialize it for use in the "remote world". In many cases, parameters for http queries are formatted differently from R:
 
--   logicals are expressed: `"true"`/`"false"`
+-   logicals are expressed as `"true"` or `"false"`
 -   time durations are specified in ms (R uses difftime, or **lubridate** durations or periods)
--   vectors are expressed using delimited strings (usually delimited by commas).
+-   vectors are expressed using delimited strings (often delimited by commas)
 
 The goal of this package is to make that translation process easier.
 
 Installation
 ------------
 
-You can install srlst from github with:
+You can install **srlst** from github with:
 
 ``` r
 # install.packages("devtools")
@@ -26,12 +26,15 @@ devtools::install_github("ijlyttle/srlst")
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
-
 ``` r
+library("httr")
 library("lubridate")
 library("srlst")
+```
 
+Let's consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function `srlst()` ("serialize list") is used to serialize the elements of your list into the format expected by the web-service.
+
+``` r
 query_params <- list(
   delay = dseconds(3),
   print = TRUE,
@@ -53,18 +56,19 @@ srlst(query_params)
 #> [1] "20"
 ```
 
-Here's where it can be handy:
+Next, you can use the **httr** package to build your URL, attaching the query.
 
 ``` r
-library("httr")
-
 url <- parse_url("https://useful.site.com/service")
-
 url$query <- srlst(query_params)
 
 build_url(url)
 #> [1] "https://useful.site.com/service?delay=3000&print=true&next_steps=collate%2Csend&number=20"
 ```
+
+If you need to change the default behavior of the serializer, the `srlst()` function lets you set the delimiter. It also lets you set the `locale()`, which is used to specify the format for individual types (like logical and time-difference).
+
+There are other situations where list-serialization may be useful. For example if you are writing HTML elements for use with JavaScript, you will often have to set parameters like `data-foo = "true"`. You can use `srlst()` to help you think in the R world, then write to the HTML/JavaScript world.
 
 Code of Conduct
 ---------------

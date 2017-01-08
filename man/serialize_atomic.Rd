@@ -8,7 +8,7 @@
 \alias{serialize_atomic.default}
 \alias{serialize_atomic.difftime}
 \alias{serialize_atomic.logical}
-\title{Format an atomic vector}
+\title{Serialize an atomic vector}
 \usage{
 serialize_atomic(x, locale = default_locale(), ...)
 
@@ -16,13 +16,11 @@ serialize_atomic.default(x, locale = default_locale(), ...)
 
 serialize_atomic.logical(x, locale = default_locale(), ...)
 
-serialize_atomic(x, locale = default_locale(), ...)
+serialize_atomic.difftime(x, locale = default_locale(), ...)
 
 \S4method{serialize_atomic}{Duration}(x, locale = default_locale(), ...)
 
 \S4method{serialize_atomic}{Period}(x, locale = default_locale(), ...)
-
-serialize_atomic.difftime(x, locale = default_locale(), ...)
 }
 \arguments{
 \item{x}{atomic vector}
@@ -35,7 +33,7 @@ serialize_atomic.difftime(x, locale = default_locale(), ...)
 character
 }
 \description{
-Format an atomic vector
+Serialize an atomic vector
 }
 \keyword{internal}
 

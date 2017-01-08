@@ -43,24 +43,24 @@
 
 <div id="srlst" class="section level1">
 <div class="page-header"><h1 class="hasAnchor"><a href="#srlst" class="anchor"> </a>srlst</h1></div>
-<p>One purpose of an API client in R is to let you work in the R world and for the client translate to the remote world. In many cases, parameters for http queries are formatted differently from R:</p>
-<ul><li>logicals are expressed: <code>"true"</code>/<code>"false"</code></li>
+<p>Serialzing lists into text-lists can make it easier to work with web-service APIs. This package can help you work with http-query lists in the &ldquo;R world&rdquo;, helping you serialize it for use in the &ldquo;remote world&rdquo;. In many cases, parameters for http queries are formatted differently from R:</p>
+<ul><li>logicals are expressed as <code>"true"</code> or <code>"false"</code></li>
 <li>time durations are specified in ms (R uses difftime, or <strong>lubridate</strong> durations or periods)</li>
-<li>vectors are expressed using delimited strings (usually delimited by commas).</li>
+<li>vectors are expressed using delimited strings (often delimited by commas)</li>
 </ul><p>The goal of this package is to make that translation process easier.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor"><a href="#installation" class="anchor"> </a>Installation</h2>
-<p>You can install srlst from github with:</p>
+<p>You can install <strong>srlst</strong> from github with:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools::<span class="kw">install_github</span>(<span class="st">"ijlyttle/srlst"</span>)</code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor"><a href="#example" class="anchor"> </a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"lubridate"</span>)
-<span class="kw">library</span>(<span class="st">"srlst"</span>)
-
-query_params &lt;-<span class="st"> </span><span class="kw">list</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"httr"</span>)
+<span class="kw">library</span>(<span class="st">"lubridate"</span>)
+<span class="kw">library</span>(<span class="st">"srlst"</span>)</code></pre></div>
+<p>Let&rsquo;s consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function <code><a href="reference/srlst.html">srlst()</a></code> (&ldquo;serialize list&rdquo;) is used to serialize the elements of your list into the format expected by the web-service.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">query_params &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">delay =</span> <span class="kw">dseconds</span>(<span class="dv">3</span>),
   <span class="dt">print =</span> <span class="ot">TRUE</span>,
   <span class="dt">next_steps =</span> <span class="kw">c</span>(<span class="st">"collate"</span>, <span class="st">"send"</span>),
@@ -79,15 +79,14 @@ query_params &lt;-<span class="st"> </span><span class="kw">list</span>(
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $number</span>
 <span class="co">#&gt; [1] "20"</span></code></pre></div>
-<p>Here&rsquo;s where it can be handy:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"httr"</span>)
-
-url &lt;-<span class="st"> </span><span class="kw">parse_url</span>(<span class="st">"https://useful.site.com/service"</span>)
-
+<p>Next, you can use the <strong>httr</strong> package to build your URL, attaching the query.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">url &lt;-<span class="st"> </span><span class="kw">parse_url</span>(<span class="st">"https://useful.site.com/service"</span>)
 url$query &lt;-<span class="st"> </span><span class="kw"><a href="reference/srlst.html">srlst</a></span>(query_params)
 
 <span class="kw">build_url</span>(url)
 <span class="co">#&gt; [1] "https://useful.site.com/service?delay=3000&amp;print=true&amp;next_steps=collate%2Csend&amp;number=20"</span></code></pre></div>
+<p>If you need to change the default behavior of the serializer, the <code><a href="reference/srlst.html">srlst()</a></code> function lets you set the delimiter. It also lets you set the <code><a href="reference/locale.html">locale()</a></code>, which is used to specify the format for individual types (like logical and time-difference).</p>
+<p>There are other situations where list-serialization may be useful. For example if you are writing HTML elements for use with JavaScript, you will often have to set parameters like <code>data-foo = "true"</code>. You can use <code><a href="reference/srlst.html">srlst()</a></code> to help you think in the R world, then write to the HTML/JavaScript world.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor"><a href="#code-of-conduct" class="anchor"> </a>Code of Conduct</h2>
