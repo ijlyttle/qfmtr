@@ -1,11 +1,11 @@
 context("locale")
 
 logical_format_test <- list(true = "true", false = "false")
-duration_unit_test <- "ms"
+dtime_format_test <- "ms"
 
 default_locale_test <- list(
   logical_format = logical_format_test,
-  duration_unit = duration_unit_test
+  dtime_format = dtime_format_test
 )
 
 test_that("logical_format works", {
@@ -19,11 +19,11 @@ test_that("logical_format works", {
   )
 })
 
-test_that("duration_unit works", {
-  expect_error(locale(duration_unit = "foo"), "arg")
+test_that("dtime_format works", {
+  expect_error(locale(dtime_format = "foo"), "arg")
   expect_identical(
-    locale(duration_unit = duration_unit_test)[["duration_unit"]],
-    duration_unit_test
+    locale(dtime_format = dtime_format_test)[["dtime_format"]],
+    dtime_format_test
   )
 })
 

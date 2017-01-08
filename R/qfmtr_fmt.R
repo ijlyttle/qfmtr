@@ -42,8 +42,6 @@ qfmtr_fmt.logical <- function(x, locale = default_locale(), ...){
 #
 # TODO: consider using option
 #   fmt = c("ms", "s", "minute", "hour", "day", "week", "year")
-#
-# S4 generic for converting to a bootstrap option
 
 #' @rdname qfmtr_fmt
 #' @keywords internal
@@ -55,14 +53,13 @@ setGeneric("qfmtr_fmt", function(x, locale = default_locale(), ...) {
 
 #' @rdname qfmtr_fmt
 #' @keywords internal
-#' @importClassesFrom lubridate Duration
 #' @export
 #'
 setMethod("qfmtr_fmt", list("Duration"), function(x, locale = default_locale(), ...){
 
-  x <- x / lubridate::dmilliseconds(1)
+  x <- lubridate::as.difftime(x)
 
-  qfmtr_fmt.default(x, locale = locale, ...)
+  qfmtr_fmt(x, locale = locale, ...)
 })
 
 # period
@@ -71,17 +68,14 @@ setMethod("qfmtr_fmt", list("Duration"), function(x, locale = default_locale(), 
 #
 # TODO: consider using option
 #   fmt = c("ms", "s", "minute", "hour", "day", "week", "year")
-#
-# S4 generic for converting to a bootstrap option
 
 #' @rdname qfmtr_fmt
 #' @keywords internal
-#' @importClassesFrom lubridate Period
 #' @export
 #'
 setMethod("qfmtr_fmt", list("Period"), function(x, locale = default_locale(), ...){
 
-  x <- lubridate::as.duration(x)
+  x <- lubridate::as.difftime(x)
 
   qfmtr_fmt(x, locale = locale, ...)
 })
@@ -91,8 +85,15 @@ setMethod("qfmtr_fmt", list("Period"), function(x, locale = default_locale(), ..
 #' @export
 #'
 qfmtr_fmt.difftime <- function(x, locale = default_locale(), ...){
-  x <- lubridate::as.duration(x)
 
-  qfmtr_fmt(x, locale = locale, ...)
+  x_ref <- as.difftime(0.001, units = "secs")
+
+  # harmonize the units
+  units(x_ref) <- "secs"
+  units(x) <- "secs"
+
+  x <- as.numeric(x) / as.numeric(x_ref)
+
+  qfmtr_fmt.default(x, locale = locale, ...)
 }
 

@@ -5,13 +5,13 @@
 \title{Create a locale}
 \usage{
 locale(logical_format = list(true = "true", false = "false"),
-  duration_unit = c("ms", "s", "min", "hr", "day", "week"))
+  dtime_format = c("ms", "s", "minute", "hour", "day", "week"))
 }
 \arguments{
 \item{logical_format}{list, with two members: \code{true} and \code{false},
 indicating how logicals will be written.}
 
-\item{duration_unit}{character, indicates how to express time-durations}
+\item{dtime_format}{character, indicates how to express time-differences.}
 }
 \value{
 list

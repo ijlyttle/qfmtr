@@ -5,13 +5,14 @@
 #'
 #' @param logical_format list, with two members: \code{true} and \code{false},
 #'   indicating how logicals will be written.
-#' @param duration_unit  character, indicates how to express time-durations
+#' @param dtime_format  character, indicates how to express time-differences.
+#'
 #'
 #' @return list
 #' @export
 #'
 locale <- function(logical_format = list(true = "true", false = "false"),
-                   duration_unit = c("ms", "s", "min", "hr", "day", "week")){
+                   dtime_format = c("ms", "s", "minute", "hour", "day", "week")){
 
   assertthat::assert_that(
     is.list(logical_format),
@@ -21,9 +22,9 @@ locale <- function(logical_format = list(true = "true", false = "false"),
     is.character(logical_format[["false"]])
   )
 
-  duration_unit <- match.arg(duration_unit)
+  dtime_format <- match.arg(dtime_format)
 
-  list(logical_format = logical_format, duration_unit = duration_unit)
+  list(logical_format = logical_format, dtime_format = dtime_format)
 }
 
 default_locale <- function(){

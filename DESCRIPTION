@@ -24,9 +24,9 @@ LazyData: true
 URL: https://github.com/ijlyttle/qfmtr
 BugReports: https://github.com/ijlyttle/qfmtr/issues
 Suggests:
+    lubridate,
     testthat,
     covr
 RoxygenNote: 5.0.1
 Imports: assertthat,
-    lubridate,
     methods
