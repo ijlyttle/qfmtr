@@ -1,4 +1,4 @@
 library("testthat")
-library("qfmtr")
+library("srlst")
 
-test_check("qfmtr")
+test_check("srlst")

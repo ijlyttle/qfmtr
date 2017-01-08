@@ -1,5 +1,5 @@
-Package: qfmtr
-Title: Help to Format http Queries
+Package: srlst
+Title: Serialize lists into text-lists
 Version: 0.0.0.9000
 Authors@R: c(
     person(
@@ -21,12 +21,12 @@ Depends:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/ijlyttle/qfmtr
-BugReports: https://github.com/ijlyttle/qfmtr/issues
+URL: https://github.com/ijlyttle/srlst
+BugReports: https://github.com/ijlyttle/srlst/issues
 Suggests:
-    lubridate,
     testthat,
     covr
 RoxygenNote: 5.0.1
 Imports: assertthat,
+    lubridate,
     methods

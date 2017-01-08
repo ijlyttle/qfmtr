@@ -1,26 +1,26 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/qfmtr)](https://cran.r-project.org/package=qfmtr) [![Travis-CI Build Status](https://travis-ci.org/ijlyttle/qfmtr.svg?branch=master)](https://travis-ci.org/ijlyttle/qfmtr) [![Coverage Status](https://img.shields.io/codecov/c/github/ijlyttle/qfmtr/master.svg)](https://codecov.io/github/ijlyttle/qfmtr?branch=master)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/srlst)](https://cran.r-project.org/package=srlst) [![Travis-CI Build Status](https://travis-ci.org/ijlyttle/srlst.svg?branch=master)](https://travis-ci.org/ijlyttle/srlst) [![Coverage Status](https://img.shields.io/codecov/c/github/ijlyttle/srlst/master.svg)](https://codecov.io/github/ijlyttle/srlst?branch=master)
 
-qfmtr
+srlst
 =====
 
 One purpose of an API client in R is to let you work in the R world and for the client translate to the remote world. In many cases, parameters for http queries are formatted differently from R:
 
 -   logicals are expressed: `"true"`/`"false"`
--   time durations are specified in ms (R uses difftime, or lubridate durations)
--   vectors are expressed using comma-delimited strings.
+-   time durations are specified in ms (R uses difftime, or **lubridate** durations or periods)
+-   vectors are expressed using delimited strings (usually delimited by commas).
 
 The goal of this package is to make that translation process easier.
 
 Installation
 ------------
 
-You can install qfmtr from github with:
+You can install srlst from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ijlyttle/qfmtr")
+devtools::install_github("ijlyttle/srlst")
 ```
 
 Example
@@ -30,7 +30,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library("lubridate")
-library("qfmtr")
+library("srlst")
 
 query_params <- list(
   delay = dseconds(3),
@@ -39,7 +39,7 @@ query_params <- list(
   number = 20
 )
 
-qfmt(query_params)
+srlst(query_params)
 #> $delay
 #> [1] "3000"
 #> 
@@ -60,7 +60,7 @@ library("httr")
 
 url <- parse_url("https://useful.site.com/service")
 
-url$query <- qfmt(query_params)
+url$query <- srlst(query_params)
 
 build_url(url)
 #> [1] "https://useful.site.com/service?delay=3000&print=true&next_steps=collate%2Csend&number=20"

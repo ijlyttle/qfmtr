@@ -1,14 +1,21 @@
 #' Create a locale
 #'
-#' This locale object acts much like the locale object from the \strong{readr} package.
-#' It is used to provide direction to the formatting methods for individual classes.
+#' This locale object acts much like the locale object from the
+#' \strong{readr} package. It is used to provide direction to the
+#' formatting methods for classes of each individual memeber of the
+#' query-parameter list sent to \code{\link{srlst}}.
 #'
 #' @param logical_format list, with two members: \code{true} and \code{false},
-#'   indicating how logicals will be written.
-#' @param dtime_format  character, indicates how to express time-differences.
+#'   character strings indicating how logicals are written.
+#' @param dtime_format  character, indicating how to express time-differences.
+#'   Using \code{\link{srlst}}, time-differences are indicated by using
+#'   \code{\link{difftime}}, \code{lubridate::\link[lubridate]{duration}}, or
+#'   \code{lubridate::\link[lubridate]{period}}.
+#'   The options indicate which time unit to use, \code{"ms"} being the default.
+#'   The output for time-differences is a character representation of the numeric
+#'   value of the time-differences expressed using that unit.
 #'
-#'
-#' @return list
+#' @seealso \code{\link{srlst}}
 #' @export
 #'
 locale <- function(logical_format = list(true = "true", false = "false"),
