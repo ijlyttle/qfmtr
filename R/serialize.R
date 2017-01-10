@@ -17,18 +17,18 @@
 #'   verbose = TRUE
 #' )
 #'
-#' srlst(query_param)
+#' serialize_list(query_param)
 #'
-#' srlst(query_param, delim = " ")
+#' serialize_list(query_param, delim = " ")
 #' @export
 #'
-srlst <- function(x, delim = ",", locale = default_locale()){
+serialize_list <- function(x, delim = ",", locale = default_locale()){
 
   # x has to be a list
   assertthat::assert_that(is.list(x))
 
   x <- lapply(x, serialize_atomic, locale)
-  x <- lapply(x, paste, sep = "", collapse = delim)
+  x <- lapply(x, paste, collapse = delim)
 
   x
 }

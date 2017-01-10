@@ -81,7 +81,7 @@
     <p>This locale object acts much like the locale object from the
 <strong>readr</strong> package. It is used to provide direction to the
 formatting methods for classes of each individual memeber of the
-query-parameter list sent to <code><a href='srlst.html'>srlst</a></code>.</p>
+query-parameter list sent to <code><a href='serialize_list.html'>serialize_list</a></code>.</p>
     
 
     <pre><span class='fu'>locale</span>(<span class='kw'>logical_format</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>true</span> <span class='kw'>=</span> <span class='st'>"true"</span>, <span class='kw'>false</span> <span class='kw'>=</span> <span class='st'>"false"</span>),
@@ -96,7 +96,7 @@ query-parameter list sent to <code><a href='srlst.html'>srlst</a></code>.</p>
 character strings indicating how logicals are written.</dd>
       <dt>dtime_format</dt>
       <dd>character, indicating how to express time-differences.
-Using <code><a href='srlst.html'>srlst</a></code>, time-differences are indicated by using
+Using <code><a href='serialize_list.html'>serialize_list</a></code>, time-differences are indicated by using
 <code>difftime</code>, <code>lubridate::<a href='http://www.rdocumentation.org/packages/lubridate/topics/duration'>duration</a></code>, or
 <code>lubridate::<a href='http://www.rdocumentation.org/packages/lubridate/topics/period'>period</a></code>.
 The options indicate which time unit to use, <code>&quot;ms&quot;</code> being the default.
@@ -106,7 +106,7 @@ value of the time-differences expressed using that unit.</dd>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='srlst.html'>srlst</a></code></p>
+    <p><code><a href='serialize_list.html'>serialize_list</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -117,7 +117,7 @@ value of the time-differences expressed using that unit.</dd>
   <span class='kw'>delay</span> <span class='kw'>=</span> <span class='fu'>dseconds</span>(<span class='fl'>5</span>)
 )
 
-<span class='fu'><a href='srlst.html'>srlst</a></span>(<span class='no'>query_params</span>)</div><div class='output co'>#&gt; $keep
+<span class='fu'><a href='serialize_list.html'>serialize_list</a></span>(<span class='no'>query_params</span>)</div><div class='output co'>#&gt; $keep
 #&gt; [1] &quot;true&quot;
 #&gt; 
 #&gt; $delay
@@ -128,7 +128,7 @@ value of the time-differences expressed using that unit.</dd>
   <span class='kw'>dtime_format</span> <span class='kw'>=</span> <span class='st'>"s"</span>
 )
 
-<span class='fu'><a href='srlst.html'>srlst</a></span>(<span class='no'>query_params</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='no'>locale_new</span>)</div><div class='output co'>#&gt; $keep
+<span class='fu'><a href='serialize_list.html'>serialize_list</a></span>(<span class='no'>query_params</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='no'>locale_new</span>)</div><div class='output co'>#&gt; $keep
 #&gt; [1] &quot;True&quot;
 #&gt; 
 #&gt; $delay

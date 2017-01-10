@@ -59,7 +59,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"ijlyttle/srls
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"httr"</span>)
 <span class="kw">library</span>(<span class="st">"lubridate"</span>)
 <span class="kw">library</span>(<span class="st">"srlst"</span>)</code></pre></div>
-<p>Let&rsquo;s consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function <code><a href="reference/srlst.html">srlst()</a></code> (&ldquo;serialize list&rdquo;) is used to serialize the elements of your list into the format expected by the web-service.</p>
+<p>Let&rsquo;s consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function <code><a href="reference/serialize_list.html">serialize_list()</a></code> is used to serialize the elements of your list into the format expected by the web-service.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">query_params &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">delay =</span> <span class="kw">dseconds</span>(<span class="dv">3</span>),
   <span class="dt">print =</span> <span class="ot">TRUE</span>,
@@ -67,7 +67,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"ijlyttle/srls
   <span class="dt">number =</span> <span class="dv">20</span>
 )
 
-<span class="kw"><a href="reference/srlst.html">srlst</a></span>(query_params)
+<span class="kw"><a href="reference/serialize_list.html">serialize_list</a></span>(query_params)
 <span class="co">#&gt; $delay</span>
 <span class="co">#&gt; [1] "3000"</span>
 <span class="co">#&gt; </span>
@@ -81,12 +81,12 @@ devtools::<span class="kw">install_github</span>(<span class="st">"ijlyttle/srls
 <span class="co">#&gt; [1] "20"</span></code></pre></div>
 <p>Thus, you can use the <strong>httr</strong> package to build your URL, attaching the query.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">url &lt;-<span class="st"> </span><span class="kw">parse_url</span>(<span class="st">"https://useful.site.com/service"</span>)
-url$query &lt;-<span class="st"> </span><span class="kw"><a href="reference/srlst.html">srlst</a></span>(query_params)
+url$query &lt;-<span class="st"> </span><span class="kw"><a href="reference/serialize_list.html">serialize_list</a></span>(query_params)
 
 <span class="kw">build_url</span>(url)
 <span class="co">#&gt; [1] "https://useful.site.com/service?delay=3000&amp;print=true&amp;next_steps=collate%2Csend&amp;number=20"</span></code></pre></div>
-<p>If you need to change the default behavior of the serializer, the <code><a href="reference/srlst.html">srlst()</a></code> function lets you set the delimiter. It also lets you set the <code><a href="reference/locale.html">locale()</a></code>, which is used to specify the format for individual types (like logical and time-difference).</p>
-<p>There are other situations where list-serialization may be useful. For example if you are writing HTML elements for use with JavaScript, you will often have to set parameters like <code>data-foo = "true"</code>. You can use <code><a href="reference/srlst.html">srlst()</a></code> to help you think in the R world, then write to the HTML/JavaScript world.</p>
+<p>If you need to change the default behavior of the serializer, the <code><a href="reference/serialize_list.html">serialize_list()</a></code> function lets you set the delimiter. It also lets you set the <code><a href="reference/locale.html">locale()</a></code>, which is used to specify the format for individual types (like logical and time-difference).</p>
+<p>There are other situations where list-serialization may be useful. For example if you are writing HTML elements for use with JavaScript, you will often have to set parameters like <code>data-foo = "true"</code>. You can use <code><a href="reference/serialize_list.html">serialize_list()</a></code> to help you think in the R world, then write to the HTML/JavaScript world.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor"><a href="#code-of-conduct" class="anchor"> </a>Code of Conduct</h2>

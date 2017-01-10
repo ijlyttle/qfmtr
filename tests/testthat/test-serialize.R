@@ -26,14 +26,14 @@ query_params_ser_new <- list(
 )
 
 test_that("list assertion works", {
-  expect_error(srlst("foo"), "list")
-  expect_identical(srlst(list("foo")), list("foo"))
+  expect_error(serialize_list("foo"), "list")
+  expect_identical(serialize_list(list("foo")), list("foo"))
 })
 
 test_that("list serialization works", {
-  expect_identical(srlst(query_params), query_params_ser)
+  expect_identical(serialize_list(query_params), query_params_ser)
   expect_identical(
-    srlst(query_params, locale = locale_new),
+    serialize_list(query_params, locale = locale_new),
     query_params_ser_new
   )
 })

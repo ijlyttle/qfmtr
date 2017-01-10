@@ -32,7 +32,7 @@ library("lubridate")
 library("srlst")
 ```
 
-Let's consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function `srlst()` ("serialize list") is used to serialize the elements of your list into the format expected by the web-service.
+Let's consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function `serialize_list()` is used to serialize the elements of your list into the format expected by the web-service.
 
 ``` r
 query_params <- list(
@@ -42,7 +42,7 @@ query_params <- list(
   number = 20
 )
 
-srlst(query_params)
+serialize_list(query_params)
 #> $delay
 #> [1] "3000"
 #> 
@@ -60,15 +60,15 @@ Thus, you can use the **httr** package to build your URL, attaching the query.
 
 ``` r
 url <- parse_url("https://useful.site.com/service")
-url$query <- srlst(query_params)
+url$query <- serialize_list(query_params)
 
 build_url(url)
 #> [1] "https://useful.site.com/service?delay=3000&print=true&next_steps=collate%2Csend&number=20"
 ```
 
-If you need to change the default behavior of the serializer, the `srlst()` function lets you set the delimiter. It also lets you set the `locale()`, which is used to specify the format for individual types (like logical and time-difference).
+If you need to change the default behavior of the serializer, the `serialize_list()` function lets you set the delimiter. It also lets you set the `locale()`, which is used to specify the format for individual types (like logical and time-difference).
 
-There are other situations where list-serialization may be useful. For example if you are writing HTML elements for use with JavaScript, you will often have to set parameters like `data-foo = "true"`. You can use `srlst()` to help you think in the R world, then write to the HTML/JavaScript world.
+There are other situations where list-serialization may be useful. For example if you are writing HTML elements for use with JavaScript, you will often have to set parameters like `data-foo = "true"`. You can use `serialize_list()` to help you think in the R world, then write to the HTML/JavaScript world.
 
 Code of Conduct
 ---------------

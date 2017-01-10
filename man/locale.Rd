@@ -15,7 +15,7 @@ default_locale()
 character strings indicating how logicals are written.}
 
 \item{dtime_format}{character, indicating how to express time-differences.
-Using \code{\link{srlst}}, time-differences are indicated by using
+Using \code{\link{serialize_list}}, time-differences are indicated by using
 \code{\link{difftime}}, \code{lubridate::\link[lubridate]{duration}}, or
 \code{lubridate::\link[lubridate]{period}}.
 The options indicate which time unit to use, \code{"ms"} being the default.
@@ -26,7 +26,7 @@ value of the time-differences expressed using that unit.}
 This locale object acts much like the locale object from the
 \strong{readr} package. It is used to provide direction to the
 formatting methods for classes of each individual memeber of the
-query-parameter list sent to \code{\link{srlst}}.
+query-parameter list sent to \code{\link{serialize_list}}.
 }
 \examples{
 library("lubridate")
@@ -36,16 +36,16 @@ query_params <- list(
   delay = dseconds(5)
 )
 
-srlst(query_params)
+serialize_list(query_params)
 
 locale_new <- locale(
   logical_format = list(true = "True", false = "False"),
   dtime_format = "s"
 )
 
-srlst(query_params, locale = locale_new)
+serialize_list(query_params, locale = locale_new)
 }
 \seealso{
-\code{\link{srlst}}
+\code{\link{serialize_list}}
 }
 
