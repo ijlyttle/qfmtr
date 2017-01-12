@@ -1,4 +1,4 @@
 library("testthat")
-library("srlst")
+library("srlze")
 
-test_check("srlst")
+test_check("srlze")

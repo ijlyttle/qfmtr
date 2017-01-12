@@ -1,4 +1,4 @@
-Package: srlst
+Package: srlze
 Title: Serialize Lists into Text-Lists
 Version: 0.0.0.9000
 Authors@R: c(
@@ -23,8 +23,8 @@ Depends:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/ijlyttle/srlst
-BugReports: https://github.com/ijlyttle/srlst/issues
+URL: https://github.com/ijlyttle/srlze
+BugReports: https://github.com/ijlyttle/srlze/issues
 Suggests:
     testthat,
     covr

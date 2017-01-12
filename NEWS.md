@@ -1,4 +1,4 @@
-## srlst 0.0.0.9000
+## srlze 0.0.0.9000
 
 - adds `delim`, `locale` arguments to `qfmt()`
 - adds `locale()` to support different formatting styles

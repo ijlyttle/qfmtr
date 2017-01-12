@@ -12,11 +12,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/srlst)](https://cran.r-project.org/package=srlst)
-[![Travis-CI Build Status](https://travis-ci.org/ijlyttle/srlst.svg?branch=master)](https://travis-ci.org/ijlyttle/srlst)
-[![Coverage Status](https://img.shields.io/codecov/c/github/ijlyttle/srlst/master.svg)](https://codecov.io/github/ijlyttle/srlst?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/srlze)](https://cran.r-project.org/package=srlze)
+[![Travis-CI Build Status](https://travis-ci.org/ijlyttle/srlze.svg?branch=master)](https://travis-ci.org/ijlyttle/srlze)
+[![Coverage Status](https://img.shields.io/codecov/c/github/ijlyttle/srlze/master.svg)](https://codecov.io/github/ijlyttle/srlze?branch=master)
 
-# srlst
+# srlze
 
 Serialzing lists into text-lists can make it easier to work with web-service APIs. This package can help you work with http-query lists in the "R world", helping you serialize it for use in the "remote world". In many cases, parameters for http queries are formatted differently from R: 
 
@@ -28,11 +28,11 @@ The goal of this package is to make that translation process easier.
 
 ## Installation
 
-You can install **srlst** from github with:
+You can install **srlze** from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("ijlyttle/srlst")
+devtools::install_github("ijlyttle/srlze")
 ```
 
 ## Example
@@ -40,7 +40,7 @@ devtools::install_github("ijlyttle/srlst")
 ```{r}
 library("httr")
 library("lubridate")
-library("srlst")
+library("srlze")
 ```
 
 Let's consider a web-serice endpoint that accepts query-parameters in the format described above. You wish to work with the query-parameters in an R-sensible way. The function `serialize_list()` is used to serialize the elements of your list into the format expected by the web-service.
